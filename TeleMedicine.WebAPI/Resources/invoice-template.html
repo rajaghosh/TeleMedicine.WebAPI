@@ -1,0 +1,111 @@
+﻿<body style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+
+    <h5>
+        Dear [[FirstName]] [[LastName]],
+    </h5>
+
+    <h5>
+        Thank you for registering with frontline MDS and your payment. Please find your invoice below.
+    </h5>
+
+
+    <hr />
+    <p style="text-align:center">
+        <table style="width:800px;border:1px solid black;padding:15px;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+            <tr>
+                <td style="text-align:center" colspan="2">
+                    <hr />
+                    <h2>
+                        Frontline MDs Tele-Health Services
+                    </h2>
+                    <h3>
+                        Invoice
+                    </h3>
+                    <hr />
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:left">
+                    <b> Bill To:</b> <br />
+                    [[FirstName]] [[LastName]]<br />
+                    [[Address]] <br />
+                    [[City]] <br />
+                    [[State]] [[Zip]] <br />
+                </td>
+                <td style="text-align:left;vertical-align:top">
+                    <b> Invoice Number:</b>
+                    [[InvNo]]<br />
+                    <b> Payment Refernce Number:</b>
+                    [[AuthTransId]]<br />
+                    <b> Date:</b>
+                    [[Date]]<br />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table style="width:100%;border-collapse:collapse; text-align:center;">
+                        <tr>
+                            <th style="width:10%;border: 1px solid grey;background-color:lightgray">
+                                S No
+                            </th>
+                            <th style="width:40%;border: 1px solid grey;background-color:lightgray">
+                                Item Description
+                            </th>
+                            <th style="width: 20%; border: 1px solid grey;background-color:lightgray">
+                                Price
+                            </th>
+                            <th style="width: 10%; border: 1px solid grey;background-color:lightgray">
+                                Qty
+                            </th>
+                            <th style="width: 20%; border: 1px solid grey;background-color:lightgray">
+                                Total
+                            </th>
+                        </tr>
+                        <tr>
+                            <td style="width:10%;height:300px;vertical-align:top; border: 1px solid grey;padding-top:10px;">
+                                1
+                            </td>
+                            <td style="width:40%;height:300px;vertical-align:top; border: 1px solid grey;padding-top:10px;">
+                                [[ItemDescription]]
+                            </td>
+                            <td style="width:20%;height:300px;vertical-align:top; border: 1px solid grey;padding-top:10px;">
+                                $[[Price]]
+                            </td>
+                            <td style="width:10%;height:300px;vertical-align:top; border: 1px solid grey;padding-top:10px;">
+                                1
+                            </td>
+                            <td style="width:20%;height:300px;vertical-align:top; border: 1px solid grey;padding-top:10px;">
+                                $[[Price]]
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="4" style="width:70%;vertical-align:top; border: 1px solid grey;padding-top:10px;;background-color:lightgray;">
+
+                            </th>
+                            <th style="width:30%;vertical-align:top; border: 1px solid grey;padding-top:10px;;background-color:lightgray;">
+                                $[[Price]]
+                            </th>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:center" colspan="2">
+
+                    <h4>
+                        <br />
+                        Thank you for registering with frontline MDS. A provider will be assigned to see you within 48 hours. We see sick patients first. <br />
+                        For updates and questions, please visit <a href="https://updates.frontlinemds.com">updates.frontlinemds.com</a>.
+                        <br />
+
+                    </h4>
+                    <h4 style="text-align:left;margin-left:20px">
+                        Frontline MDs Team.
+                    </h4>
+                    <hr />
+                </td>
+            </tr>
+        </table>
+    </p>
+</body>
