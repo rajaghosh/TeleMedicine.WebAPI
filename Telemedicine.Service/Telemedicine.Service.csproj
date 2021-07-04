@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="GracePG.Gateway.dll" />
     <None Remove="Telemedicine.Service.zip" />
   </ItemGroup>
 

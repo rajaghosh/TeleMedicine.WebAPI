@@ -7,7 +7,6 @@ using Newtonsoft.Json;
 using Telemedicine.Service.Models;
 using System.Linq;
 using System.Data.SqlClient;
-using GracePG.Gateway.Models;
 using System.Drawing.Drawing2D;
 using Telemedicine.Service.Managers;
 using System.IO;
@@ -255,8 +254,8 @@ namespace Telemedicine.Service.Managers
 
                 SecureConfig config = await getSecureConfig();
 
-                
-                GracePG.Gateway.Models.GatewayRequest gatewayRequest = new GracePG.Gateway.Models.GatewayRequest()
+
+                GatewayRequest gatewayRequest = new GatewayRequest()
                 {
                     IsTest = !config.IsLive,
                     Gateway = Gateway.AuthorizeNet,
@@ -281,13 +280,8 @@ namespace Telemedicine.Service.Managers
 
                 };
 
-                //ChargeCreditCard cardData = new ChargeCreditCard();
                 string transId = "";
                 var response = TelemedicineChargeCreditCard.Run(gatewayRequest.TokenExId, gatewayRequest.TokenExAPIKey, Convert.ToDecimal(gatewayRequest.Amount), out transId);
-
-                //GracePG.Gateway.Managers.AuthorizeNetManager authorizeNetManager = new GracePG.Gateway.Managers.AuthorizeNetManager();
-                //GatewayResponse gatewayResponse = await authorizeNetManager.MakePayment(gatewayRequest);
-
 
                 //if (gatewayResponse.PaymentResult)
                 if (response != null)
