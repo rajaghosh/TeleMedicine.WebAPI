@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Net.Authorize.Dot.Net.Core\Net.Authorize.Dot.Net.Core.csproj" />
+    <ProjectReference Include="..\Telemedicine.Service\Telemedicine.Service.csproj" />
   </ItemGroup>
 
 </Project>

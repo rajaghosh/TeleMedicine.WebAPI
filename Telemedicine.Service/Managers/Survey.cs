@@ -15,6 +15,7 @@ using Telemedicine.Service.TelemedicineGateway;
 using AuthorizeNet.Api.Contracts.V1;
 using AuthorizeNet.Api.Controllers.Bases;
 using AuthorizeNet.Api.Controllers;
+using net.authorize.sample;
 
 namespace Telemedicine.Service.Managers
 {
@@ -280,9 +281,9 @@ namespace Telemedicine.Service.Managers
 
                 };
 
-                ChargeCreditCard cardData = new ChargeCreditCard();
+                //ChargeCreditCard cardData = new ChargeCreditCard();
                 string transId = "";
-                var response = ChargeCreditCard.Run(gatewayRequest.TokenExId, gatewayRequest.TokenExAPIKey, Convert.ToDecimal(gatewayRequest.Amount), out transId);
+                var response = TelemedicineChargeCreditCard.Run(gatewayRequest.TokenExId, gatewayRequest.TokenExAPIKey, Convert.ToDecimal(gatewayRequest.Amount), out transId);
 
                 //GracePG.Gateway.Managers.AuthorizeNetManager authorizeNetManager = new GracePG.Gateway.Managers.AuthorizeNetManager();
                 //GatewayResponse gatewayResponse = await authorizeNetManager.MakePayment(gatewayRequest);
