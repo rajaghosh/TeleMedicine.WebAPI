@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeleMedicine.WebAPI", "Tele
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telemedicine.Service", "Telemedicine.Service\Telemedicine.Service.csproj", "{694FCA6C-DCD5-45A6-89DE-399868F0EE95}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorize.Net_DotNet_Core", "Net.Authorize_DotNetCore\Authorize.Net_DotNet_Core.csproj", "{4826983E-ABCB-46A3-BA50-18B6DB617D7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testmedicine.Testing", "Testmedicine.Testing\Testmedicine.Testing.csproj", "{CE445EA5-4070-4855-A30F-4F24097478A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testmedicine.Testing", "Testmedicine.Testing\Testmedicine.Testing.csproj", "{CE445EA5-4070-4855-A30F-4F24097478A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Net.Authorize.Dot.Net.Core", "Net.Authorize.Dot.Net.Core\Net.Authorize.Dot.Net.Core.csproj", "{CC83A3DA-2D8B-4794-A7D6-851A05B2FB7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,14 @@ Global
 		{694FCA6C-DCD5-45A6-89DE-399868F0EE95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{694FCA6C-DCD5-45A6-89DE-399868F0EE95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{694FCA6C-DCD5-45A6-89DE-399868F0EE95}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4826983E-ABCB-46A3-BA50-18B6DB617D7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4826983E-ABCB-46A3-BA50-18B6DB617D7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4826983E-ABCB-46A3-BA50-18B6DB617D7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4826983E-ABCB-46A3-BA50-18B6DB617D7F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CE445EA5-4070-4855-A30F-4F24097478A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CE445EA5-4070-4855-A30F-4F24097478A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE445EA5-4070-4855-A30F-4F24097478A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE445EA5-4070-4855-A30F-4F24097478A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC83A3DA-2D8B-4794-A7D6-851A05B2FB7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC83A3DA-2D8B-4794-A7D6-851A05B2FB7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC83A3DA-2D8B-4794-A7D6-851A05B2FB7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC83A3DA-2D8B-4794-A7D6-851A05B2FB7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
