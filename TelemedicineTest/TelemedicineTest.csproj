@@ -20,14 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BridgeClassLibrary\BridgeClassLibrary.csproj" />
+    <ProjectReference Include="..\Net.Authorize_DotNetCore\SampleCode_DotNet_Core.csproj" />
     <ProjectReference Include="..\Telemedicine.Service\Telemedicine.Service.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="SampleCode">
-      <HintPath>..\sample-code-csharp\SampleCode.exe</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>
