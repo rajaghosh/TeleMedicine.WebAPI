@@ -11,6 +11,10 @@ using GracePG.Gateway.Models;
 using System.Drawing.Drawing2D;
 using Telemedicine.Service.Managers;
 using System.IO;
+using Telemedicine.Service.TelemedicineGateway;
+using AuthorizeNet.Api.Contracts.V1;
+using AuthorizeNet.Api.Controllers.Bases;
+using AuthorizeNet.Api.Controllers;
 
 namespace Telemedicine.Service.Managers
 {
@@ -276,11 +280,16 @@ namespace Telemedicine.Service.Managers
 
                 };
 
-                GracePG.Gateway.Managers.AuthorizeNetManager authorizeNetManager = new GracePG.Gateway.Managers.AuthorizeNetManager();
-                GatewayResponse gatewayResponse = await authorizeNetManager.MakePayment(gatewayRequest);
+                ChargeCreditCard cardData = new ChargeCreditCard();
+                string transId = "";
+                var response = ChargeCreditCard.Run(gatewayRequest.TokenExId, gatewayRequest.TokenExAPIKey, Convert.ToDecimal(gatewayRequest.Amount), out transId);
+
+                //GracePG.Gateway.Managers.AuthorizeNetManager authorizeNetManager = new GracePG.Gateway.Managers.AuthorizeNetManager();
+                //GatewayResponse gatewayResponse = await authorizeNetManager.MakePayment(gatewayRequest);
 
 
-                if (gatewayResponse.PaymentResult)
+                //if (gatewayResponse.PaymentResult)
+                if (response != null)
                 {
 
                     dataProvider.Cmd = new SqlCommand
@@ -295,7 +304,7 @@ namespace Telemedicine.Service.Managers
                     dataProvider.Cmd.Parameters.Add("@AccountType", SqlDbType.NVarChar).Value = paymentRequest.AccountType;
                     dataProvider.Cmd.Parameters.Add("@AccountCode", SqlDbType.NVarChar).Value = paymentRequest.AccountCode;
                     dataProvider.Cmd.Parameters.Add("@Amount", SqlDbType.Float).Value = paymentRequest.Amount;
-                    dataProvider.Cmd.Parameters.Add("@AuthTransId", SqlDbType.NVarChar).Value = gatewayResponse.TransId;
+                    dataProvider.Cmd.Parameters.Add("@AuthTransId", SqlDbType.NVarChar).Value = transId; // gatewayResponse.TransId;
                     await dataProvider.CmdGetScalarval(PMSFolder, dataProvider.Cmd);
 
                     if (paymentRequest.Reference != null && paymentRequest.Reference != string.Empty)
@@ -321,7 +330,7 @@ namespace Telemedicine.Service.Managers
                         mailcontent = mailcontent.Replace("[[State]]", paymentRequest.State);
                         mailcontent = mailcontent.Replace("[[Zip]]", paymentRequest.Zip);
                         mailcontent = mailcontent.Replace("[[InvNo]]", paymentRequest.TransactionId.ToString());
-                        mailcontent = mailcontent.Replace("[[AuthTransId]]", gatewayResponse.TransId);
+                        mailcontent = mailcontent.Replace("[[AuthTransId]]", transId); // gatewayResponse.TransId);
                         mailcontent = mailcontent.Replace("[[Date]]", DateTime.Now.ToString("MM/dd/yyyy"));
                         mailcontent = mailcontent.Replace("[[ItemDescription]]", paymentRequest.TransactionDescription);
                         mailcontent = mailcontent.Replace("[[AfterPaymentInstructions]]", paymentRequest.AfterPaymentInstructions);
@@ -340,10 +349,9 @@ namespace Telemedicine.Service.Managers
                     }
 
                     //SendEmail End
-
-
-                    return new PaymentResult() { TransactionId = paymentRequest.TransactionId, AuthTransId = gatewayResponse.TransId, Result = true };
-
+                    //return new PaymentResult() { TransactionId = paymentRequest.TransactionId, AuthTransId = gatewayResponse.TransId, Result = true };
+                    return new PaymentResult() { TransactionId = paymentRequest.TransactionId, AuthTransId = transId, Result = true };
+                    
                     //}
                     //else
                     //{

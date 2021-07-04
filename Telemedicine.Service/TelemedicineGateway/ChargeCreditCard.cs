@@ -3,17 +3,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using AuthorizeNet.Api.Contracts.V1;
+using AuthorizeNet.Api.Controllers.Bases;
+using AuthorizeNet.Api.Controllers;
 
-//Uses Grace.Api
-using GracePG.Gateway.Models.AuthorizeNet;  //.Api.Controllers;
-//using AuthorizeNet.Api.Contracts.V1;
-//using AuthorizeNet.Api.Controllers.Bases;
 
 namespace Telemedicine.Service.TelemedicineGateway
 {
     public class ChargeCreditCard
     {
-        public static ANetApiResponse Run(String ApiLoginID, String ApiTransactionKey, decimal amount)
+        public static ANetApiResponse Run(String ApiLoginID, String ApiTransactionKey, decimal amount, out string transId)
         {
 
             ApiLoginID = "23zLE6Ldc7vs";
@@ -74,9 +73,13 @@ namespace Telemedicine.Service.TelemedicineGateway
             // get the response from the service (errors contained if any)
             var response = controller.GetApiResponse();
 
+            transId = "";
+
             // validate response
             if (response != null)
             {
+                transId = response.transactionResponse.transId;
+
                 if (response.messages.resultCode == messageTypeEnum.Ok)
                 {
                     if (response.transactionResponse.messages != null)
