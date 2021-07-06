@@ -281,7 +281,7 @@ namespace Telemedicine.Service.Managers
                 };
 
                 string transId = "";
-                var response = TelemedicineChargeCreditCard.Run(gatewayRequest.TokenExId, gatewayRequest.TokenExAPIKey, Convert.ToDecimal(gatewayRequest.Amount), out transId);
+                var response = TelemedicineChargeCreditCard.Run(gatewayRequest.TokenExId, gatewayRequest.TokenExAPIKey, Convert.ToDecimal(gatewayRequest.Amount), out transId, paymentRequest);
 
                 //if (gatewayResponse.PaymentResult)
                 if (response != null)
@@ -314,9 +314,10 @@ namespace Telemedicine.Service.Managers
                         await dataProvider.CmdGetScalarval(PMSFolder, dataProvider.Cmd);
                     }
 
-                    //SendEmail Start
+                    //SendEmail Start 
                     try
-                    {                        
+                    {
+                        paymentRequest.TransactionId = transId;
                         string mailcontent = config.InvoiceEmailContent;
                         mailcontent = mailcontent.Replace("[[FirstName]]", paymentRequest.FirstName);
                         mailcontent = mailcontent.Replace("[[LastName]]", paymentRequest.LastName);
@@ -325,6 +326,7 @@ namespace Telemedicine.Service.Managers
                         mailcontent = mailcontent.Replace("[[State]]", paymentRequest.State);
                         mailcontent = mailcontent.Replace("[[Zip]]", paymentRequest.Zip);
                         mailcontent = mailcontent.Replace("[[InvNo]]", paymentRequest.TransactionId.ToString());
+                        //Must be discussed before Final Code
                         mailcontent = mailcontent.Replace("[[AuthTransId]]", transId); // gatewayResponse.TransId);
                         mailcontent = mailcontent.Replace("[[Date]]", DateTime.Now.ToString("MM/dd/yyyy"));
                         mailcontent = mailcontent.Replace("[[ItemDescription]]", paymentRequest.TransactionDescription);
