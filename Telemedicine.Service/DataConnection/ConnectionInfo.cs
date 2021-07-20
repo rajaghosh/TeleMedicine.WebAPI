@@ -19,8 +19,8 @@ namespace Telemedicine.Service.DataConnection
         public static Connection GetConnection(string PMSFolder)
         {
             //string value = @"Data Source=LAPTOP-56RNU54V;Initial Catalog=TelemedicineClone;Integrated Security=True"; 
-            // string value = @"Data Source =localhost\SQLEXPRESS; Initial Catalog = tele; Persist Security Info = True; User ID = roy; Password = Abcd@123456";
-            string value = @"Data Source =EC2AMAZ-ERQKSGT; Initial Catalog = Telemedicine; Persist Security Info = True; User ID = user01; Password = Telemed$2022";
+         // string value = @"Data Source =localhost\SQLEXPRESS; Initial Catalog = tele; Persist Security Info = True; User ID = roy; Password = Abcd@123456";
+        string value = @"Data Source =EC2AMAZ-ERQKSGT; Initial Catalog = Telemedicine; Persist Security Info = True; User ID = user01; Password = Telemed$2022";
              
             var prop = new Connection
             {

@@ -13,7 +13,7 @@ namespace net.authorize.sample
     {
         public static ANetApiResponse Run(String ApiLoginID, String ApiTransactionKey, decimal amount, GatewayPaymentRequest paymentRequest = null)
         {
-            Console.WriteLine("Charge Credit Card Sample");
+            Console.WriteLine("Charge Credit Card");
 
             ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.PRODUCTION;
 
@@ -67,12 +67,13 @@ namespace net.authorize.sample
 
             // get the response from the service (errors contained if any)
             var response = controller.GetApiResponse();
-
+            LogTransaction("  ");
+            LogTransaction("  ");
             LogTransaction("Log Start: " + System.DateTime.Now.ToString() + "*************");
             LogTransaction(JsonSerializer.Serialize(paymentRequest));
 
             // validate response
-            if (response != null)
+            if ((response.transactionResponse.errors == null) && (response.transactionResponse != null))
             {
                 if (response.messages.resultCode == messageTypeEnum.Ok)
                 {
@@ -98,6 +99,7 @@ namespace net.authorize.sample
                             LogTransaction("Error Code: " + response.transactionResponse.errors[0].errorCode);
                             LogTransaction("Error message: " + response.transactionResponse.errors[0].errorText);
                         }
+                        throw new NullReferenceException("Payment Not made");
                     }
                 }
                 else
@@ -113,11 +115,21 @@ namespace net.authorize.sample
                         LogTransaction("Error Code: " + response.messages.message[0].code);
                         LogTransaction("Error message: " + response.messages.message[0].text);
                     }
+                    throw new NullReferenceException("Payment Not made");
                 }
             }
             else
             {
-                LogTransaction("Null Response.");
+
+                if(response.transactionResponse.errors != null)
+                {
+                   // print error code
+                    foreach (var x in response.transactionResponse.errors) {
+                        LogTransaction(x.errorText);
+                    }
+                }
+                throw new NullReferenceException("Payment Not made");
+
             }
 
             return response;
