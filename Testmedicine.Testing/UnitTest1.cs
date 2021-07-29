@@ -19,11 +19,13 @@ namespace Testmedicine.Testing
         [TestMethod]
         public void TestMakePaymentFromSurvey()
         {
-            string testData = ""; // 12.34M;
-            const string apiLoginId = "5KP3u95bQpv";
-            const string transactionKey = "346HZ32z3fP4hTG2";
-            //TelemedicineChargeCreditCard telemed = new TelemedicineChargeCreditCard();
-            TelemedicineChargeCreditCard.Run(apiLoginId, transactionKey, 12.34M, out testData);
+           // string testData = ""; // 12.34M;
+           //// const string apiLoginId = "5KP3u95bQpv";
+           // const string apiLoginId = "7Qvk3Z38";
+           //// const string transactionKey = "346HZ32z3fP4hTG2";
+           // const string transactionKey = "9548R3mzgE22UbSq";
+           // //TelemedicineChargeCreditCard telemed = new TelemedicineChargeCreditCard();
+           // TelemedicineChargeCreditCard.Run(apiLoginId, transactionKey, 12.34M, out testData);
         }
 
         [TestMethod]
@@ -52,7 +54,6 @@ namespace Testmedicine.Testing
             //payment.TransactionId;
             payment.TransactionDescription = "ChargeCreditCard";
             payment.AfterPaymentInstructions = "CreditCardCharged";
-
 
             Survey surveyObj = new Survey();
             var response = await surveyObj.MakePayment(payment);

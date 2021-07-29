@@ -16,6 +16,15 @@ namespace Telemedicine.Service.TelemedicineGateway
     {
         public static ANetApiResponse Run(String ApiLoginID, String ApiTransactionKey, decimal amount, out string transId, Models.PaymentRequest paymentRequest = null)
         {
+            //live
+            ApiLoginID = "7Qvk3Z38";
+            ApiTransactionKey = "9548R3mzgE22UbSq";
+
+             
+            // sand
+            //ApiLoginID = "5KP3u95bQpv";
+            //ApiTransactionKey = "346HZ32z3fP4hTG2";
+
             ANetApiResponse responseData = null;
             try
             {
@@ -58,6 +67,10 @@ namespace Telemedicine.Service.TelemedicineGateway
                 {
                     transId = ""; 
                     ChargeCreditCard.LogTransaction("No Trans ID generateed XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --- "); 
+                }
+                else if(tempTransID == "0")
+                {
+                    throw new NullReferenceException("Payment Not made");
                 }
                 else
                 {
